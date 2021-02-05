@@ -1,0 +1,9 @@
+[package]
+name = "lifetimed-bytes"
+version = "0.1.0"
+authors = ["Artem Vorotnikov <artem@vorotnikov.me>"]
+edition = "2018"
+license = "Apache-2.0"
+
+[dependencies]
+bytes = { version = "1", default-features = false }
