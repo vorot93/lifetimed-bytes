@@ -108,6 +108,12 @@ impl<'b> From<&'b [u8]> for Bytes<'b> {
     }
 }
 
+impl<'b, const N: usize> From<&'b [u8; N]> for Bytes<'b> {
+    fn from(raw: &'b [u8; N]) -> Self {
+        (raw as &[u8]).into()
+    }
+}
+
 impl<'b> From<&'b str> for Bytes<'b> {
     fn from(s: &'b str) -> Self {
         s.as_bytes().into()
