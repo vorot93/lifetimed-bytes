@@ -248,6 +248,18 @@ impl<'b, const N: usize> PartialOrd<Bytes<'b>> for [u8; N] {
     }
 }
 
+impl<'b, const N: usize> PartialEq<[u8; N]> for Bytes<'b> {
+    fn eq(&self, other: &[u8; N]) -> bool {
+        PartialEq::eq(&self.inner, other as &[u8])
+    }
+}
+
+impl<'b, const N: usize> PartialOrd<[u8; N]> for Bytes<'b> {
+    fn partial_cmp(&self, other: &[u8; N]) -> Option<cmp::Ordering> {
+        PartialOrd::partial_cmp(&self.inner, other as &[u8])
+    }
+}
+
 impl<'b> PartialEq<Bytes<'b>> for &str {
     fn eq(&self, other: &Bytes<'b>) -> bool {
         PartialEq::eq(self, &other.inner)
