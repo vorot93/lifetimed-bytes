@@ -2,13 +2,14 @@ use bytes::Buf;
 use core::{
     borrow::Borrow,
     cmp,
+    fmt::{self, Debug},
     iter::FromIterator,
     marker::PhantomData,
     mem::transmute,
     ops::{Deref, RangeBounds},
 };
 
-#[derive(Clone, Debug, Default, Hash)]
+#[derive(Clone, Default, Hash)]
 pub struct Bytes<'b> {
     inner: bytes::Bytes,
     _marker: PhantomData<&'b ()>,
@@ -74,6 +75,12 @@ impl<'b> Buf for Bytes<'b> {
 
     fn advance(&mut self, cnt: usize) {
         self.inner.advance(cnt)
+    }
+}
+
+impl<'b> Debug for Bytes<'b> {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        self.inner.fmt(f)
     }
 }
 
