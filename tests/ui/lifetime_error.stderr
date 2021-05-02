@@ -1,0 +1,11 @@
+error[E0505]: cannot move out of `v` because it is borrowed
+ --> $DIR/lifetime_error.rs:7:10
+  |
+5 |     let b = Bytes::from(v.as_slice());
+  |                         - borrow of `v` occurs here
+6 |
+7 |     drop(v);
+  |          ^ move out of `v` occurs here
+8 |
+9 |     println!("oops: {:?}", b);
+  |                            - borrow later used here

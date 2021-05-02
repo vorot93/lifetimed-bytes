@@ -7,3 +7,6 @@ license = "Apache-2.0"
 
 [dependencies]
 bytes = { version = "1", default-features = false }
+
+[dev-dependencies]
+trybuild = "1"

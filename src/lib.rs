@@ -303,3 +303,12 @@ impl<'b> Ord for Bytes<'b> {
         self.inner.cmp(&other.inner)
     }
 }
+
+#[cfg(test)]
+pub mod tests {
+    #[test]
+    fn ui() {
+        let t = trybuild::TestCases::new();
+        t.compile_fail("tests/ui/*.rs");
+    }
+}
