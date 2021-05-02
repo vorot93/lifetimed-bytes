@@ -1,4 +1,4 @@
-use bytes::Buf;
+pub use bytes::{Buf, BufMut, BytesMut};
 use core::{
     borrow::Borrow,
     cmp,
