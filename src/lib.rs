@@ -1,3 +1,8 @@
+#![no_std]
+
+extern crate alloc;
+
+use alloc::{string::String, vec::Vec};
 pub use bytes::{Buf, BufMut, BytesMut};
 use core::{
     borrow::Borrow,
@@ -301,6 +306,15 @@ impl<'b> Eq for Bytes<'b> {}
 impl<'b> Ord for Bytes<'b> {
     fn cmp(&self, other: &Self) -> cmp::Ordering {
         self.inner.cmp(&other.inner)
+    }
+}
+
+impl<'b> From<alloc::borrow::Cow<'b, [u8]>> for Bytes<'b> {
+    fn from(v: alloc::borrow::Cow<'b, [u8]>) -> Self {
+        match v {
+            alloc::borrow::Cow::Borrowed(b) => Self::from(b),
+            alloc::borrow::Cow::Owned(b) => Self::from(b),
+        }
     }
 }
 
