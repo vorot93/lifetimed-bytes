@@ -2,8 +2,13 @@
 name = "lifetimed-bytes"
 version = "0.1.0"
 authors = ["Artem Vorotnikov <artem@vorotnikov.me>"]
-edition = "2018"
+edition = "2021"
 license = "Apache-2.0"
+description = "Bytes, but with attached lifetime"
+repository = "https://github.com/vorot93/lifetimed-bytes"
+readme = "README.md"
+keywords = ["buffers", "zero-copy", "io"]
+categories = ["network-programming", "data-structures"]
 
 [dependencies]
 bytes = { version = "1", default-features = false }
